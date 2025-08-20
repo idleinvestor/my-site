@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>早期リタイア（FIRE）シミュレーション</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YN24BT2T72"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YN24BT2T72');
+</script>
+<body>
+    <div class="container">
+        <h1>早期リタイア（FIRE）シミュレーション</h1>
+        <p>このサイトはモンテカルロ法をつかって資産運用の結果をシミュレーションできます。</p>
+
+        初期資産：<input type="number" id="initial-amount" value="10000"> 万円<br>
+        年間使用額：<input type="number" id="annual-expense" value="500"> 万円<br>
+        期待リターン：<input type="number" id="annual-return" value="5.4"> %<br>
+        リスク：<input type="number" id="volatility" value="9.2"> %<br>
+        残り年数：<input type="number" id="years-left" value="20"> 年<br><br>
+        <button id="simulate-btn">シミュレート</button>
+
+        <p>リタイア成功確率: <span id="success-rate">0</span></p>
+
+        <canvas id="chart"></canvas>
+
+        <p>以下の表は過去20年実績データ（2003年7月末－2023年7月末、円ベース）です。期待リターン、リスクを参考にしてください。</p>
+        <h2>全世界株式（eMaxisSlimオールカントリー等）</h2>
+        <table class="investmentTable">
+          <thead>
+            <tr>
+              <th>全世界株式(%)</th>
+              <th>現金(%)</th>
+              <th>期待リターン(%)</th>
+              <th>リスク(%)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>100</td><td>0</td><td>10.1</td><td>18.4</td></tr>
+            <tr><td>90</td><td>10</td><td>9.2</td><td>16.6</td></tr>
+            <tr><td>80</td><td>20</td><td>8.3</td><td>14.7</td></tr>
+            <tr><td>70</td><td>30</td><td>7.4</td><td>12.9</td></tr>
+            <tr><td>60</td><td>40</td><td>6.4</td><td>11</td></tr>
+            <tr><td>50</td><td>50</td><td>5.4</td><td>9.2</td></tr>
+            <tr><td>40</td><td>60</td><td>4.4</td><td>7.4</td></tr>
+            <tr><td>30</td><td>70</td><td>3.4</td><td>5.5</td></tr>
+            <tr><td>20</td><td>80</td><td>2.3</td><td>3.7</td></tr>
+            <tr><td>10</td><td>90</td><td>1.2</td><td>1.8</td></tr>
+            <tr><td>0</td><td>100</td><td>0.1</td><td>0</td></tr>
+          </tbody>
+        </table>
+        <h2>全米株式（楽天・全米株式インデックス・ファンド等）</h2>
+        <table class="investmentTable">
+          <thead>
+            <tr>
+              <th>全米株式(%)</th>
+              <th>現金(%)</th>
+              <th>期待リターン(%)</th>
+              <th>リスク(%)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>100</td><td>0</td><td>11</td><td>18.1</td></tr>
+            <tr><td>90</td><td>10</td><td>10.1</td><td>16.3</td></tr>
+            <tr><td>80</td><td>20</td><td>9</td><td>14.5</td></tr>
+            <tr><td>70</td><td>30</td><td>8</td><td>12.6</td></tr>
+            <tr><td>60</td><td>40</td><td>6.9</td><td>10.8</td></tr>
+            <tr><td>50</td><td>50</td><td>5.9</td><td>9</td></tr>
+            <tr><td>40</td><td>60</td><td>4.7</td><td>7.2</td></tr>
+            <tr><td>30</td><td>70</td><td>3.6</td><td>5.4</td></tr>
+            <tr><td>20</td><td>80</td><td>2.4</td><td>3.6</td></tr>
+            <tr><td>10</td><td>90</td><td>1.3</td><td>1.8</td></tr>
+            <tr><td>0</td><td>100</td><td>0.1</td><td>0</td></tr>
+          </tbody>
+        </table>
+        <h2>GPIF（年金積立金管理運用独立行政法人）</h2>
+        <table class="investmentTable">
+          <thead>
+            <tr>
+              <th>GPIF(%)</th>
+              <th>現金(%)</th>
+              <th>期待リターン(%)</th>
+              <th>リスク(%)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>100</td><td>0</td><td>5.8</td><td>9.8</td></tr>
+          </tbody>
+        </table>
+
+        <h2>説明</h2>
+        <ul>
+          <li>シミュレーションボタンを押すごとに40回のシミュレーション結果をグラフに出力します。</li>
+          <li>初期値の期待リターンとリスクは過去20年間、全世界株50%、現金50%の割合で投資した場合ものです。</li>
+          <li>残り年数が終了するまでに資産が0になっていなければリタイア成功とカウントします。</li>
+          <li>インフレ率と投資の利益にかかる税金は考慮していません。</li>
+          <li>あなたが入力したデータはサーバに送られず、保存もされません。</li>
+          <li>表のデータは<a href="https://myindex.jp/">myINDEX</a>を参考にしています。</li>
+          <li>全てはご自身の責任でご利用ください。</li>
+        </ul>
+        <p>早期リタイアを目指すなら、確固たる資産の構築とその運用が鍵です。いわゆる期待リターンは、毎年一定の増益を保証するものではありません。しかし、その変動を知ることで、より確実なリタイア計画を描けるようになります。ご意見、ご感想、ご提案などがございましたら、お気軽にメールでお知らせください。</p>
+        <p>資産運用シミュレータは<a href="https://www.netemate.net/">netemate</a>が作りました。</p>
+    </div>
+
+    <script src="scripts.js"></script>
+
+</body>
+</html>
