@@ -25,7 +25,8 @@
         年間使用額：<input type="number" id="annual-expense" value="500"> 万円<br>
         期待リターン：<input type="number" id="annual-return" value="5.6"> %<br>
         リスク：<input type="number" id="volatility" value="9.3"> %<br>
-        残り年数：<input type="number" id="years-left" value="20"> 年<br><br>
+        インフレ率：<input type="number" id="inflation-rate" value="1.0"> %<br>
+        残り年数：<input type="number" id="years-left" value="30"> 年<br><br>
         <button id="simulate-btn">シミュレート</button>
 
         <p>リタイア成功確率: <span id="success-rate">0</span></p>
@@ -101,7 +102,7 @@
           <li>シミュレーションボタンを押すごとに40回のシミュレーション結果をグラフに出力します。</li>
           <li>初期値の期待リターンとリスクは過去20年間、全世界株50%、現金50%の割合で投資した場合ものです。</li>
           <li>残り年数が終了するまでに資産が0になっていなければリタイア成功とカウントします。</li>
-          <li>インフレ率と投資の利益にかかる税金は考慮していません。</li>
+          <li>投資の利益にかかる税金は考慮していません。</li>
           <li>あなたが入力したデータはサーバに送られず、保存もされません。</li>
           <li>表のデータは<a href="https://myindex.jp/">myINDEX</a>を参考にしています。</li>
           <li>全てはご自身の責任でご利用ください。</li>
