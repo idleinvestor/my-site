@@ -1,1 +1,84 @@
-const _0x35fd8b=_0x3f5b;(function(_0x482222,_0x3ae36f){const _0x4bb0e6=_0x3f5b,_0x55d51c=_0x482222();while(!![]){try{const _0x99c608=-parseInt(_0x4bb0e6(0xdc))/0x1*(parseInt(_0x4bb0e6(0xd3))/0x2)+parseInt(_0x4bb0e6(0xde))/0x3+-parseInt(_0x4bb0e6(0xe5))/0x4*(-parseInt(_0x4bb0e6(0xcc))/0x5)+parseInt(_0x4bb0e6(0xe2))/0x6+-parseInt(_0x4bb0e6(0xd6))/0x7*(-parseInt(_0x4bb0e6(0xd2))/0x8)+-parseInt(_0x4bb0e6(0xcd))/0x9*(parseInt(_0x4bb0e6(0xca))/0xa)+-parseInt(_0x4bb0e6(0xce))/0xb;if(_0x99c608===_0x3ae36f)break;else _0x55d51c['push'](_0x55d51c['shift']());}catch(_0x314204){_0x55d51c['push'](_0x55d51c['shift']());}}}(_0x2911,0x4c09b));let currentChart;function _0x3f5b(_0x4a4e90,_0x39de58){const _0x2911f6=_0x2911();return _0x3f5b=function(_0x3f5b6a,_0xeba509){_0x3f5b6a=_0x3f5b6a-0xc8;let _0xf30fa3=_0x2911f6[_0x3f5b6a];return _0xf30fa3;},_0x3f5b(_0x4a4e90,_0x39de58);}function _0x2911(){const _0x13d4f1=['from','volatility','4426rouwpK','chart','1240230zmPedo','success-rate','click','cos','2974956ZzfFWx','destroy','addEventListener','4BzjEgq','innerText','sqrt','toFixed','push','random','length','getElementById','1288040TRXjTr','value','1977115ocLhLX','18VckTrr','8862777cwReYx','initial-amount','years-left',',\x200.5)','56ywEqfU','68slsNJt','log','line','220591hCaejR','rgba(','annual-return','simulate-btn'];_0x2911=function(){return _0x13d4f1;};return _0x2911();}document[_0x35fd8b(0xc9)](_0x35fd8b(0xd9))[_0x35fd8b(0xe4)](_0x35fd8b(0xe0),simulate);const simulations=0x28;function boxMuller(){const _0x30d395=_0x35fd8b;let _0x1c0a6b=Math[_0x30d395(0xea)](),_0x195d83=Math[_0x30d395(0xea)]();return Math[_0x30d395(0xe7)](-0x2*Math[_0x30d395(0xd4)](_0x1c0a6b))*Math[_0x30d395(0xe1)](0x2*Math['PI']*_0x195d83);}function simulate(){const _0x5eab84=_0x35fd8b;let _0x62c45c=parseFloat(document[_0x5eab84(0xc9)](_0x5eab84(0xcf))[_0x5eab84(0xcb)]),_0x360674=parseFloat(document[_0x5eab84(0xc9)]('annual-expense')[_0x5eab84(0xcb)]),_0x477942=parseFloat(document['getElementById'](_0x5eab84(0xd8))['value'])/0x64,_0x359f6c=parseFloat(document[_0x5eab84(0xc9)](_0x5eab84(0xdb))[_0x5eab84(0xcb)])/0x64,_0x16f1ce=parseInt(document[_0x5eab84(0xc9)](_0x5eab84(0xd0))[_0x5eab84(0xcb)]),_0x5b22f2=0x0,_0x2ac389=[];for(let _0x255cc3=0x0;_0x255cc3<simulations;_0x255cc3++){let _0x708b18=_0x62c45c,_0x792b39=[_0x62c45c];for(let _0x6f6dd5=0x0;_0x6f6dd5<_0x16f1ce;_0x6f6dd5++){_0x708b18+=(_0x477942+_0x359f6c*boxMuller())*_0x708b18-_0x360674,_0x792b39['push'](_0x708b18);if(_0x708b18<=0x0)break;}if(_0x792b39[_0x792b39[_0x5eab84(0xc8)]-0x1]>0x0)_0x5b22f2++;_0x2ac389[_0x5eab84(0xe9)](_0x792b39);}let _0xce3d2c=_0x5b22f2/simulations*0x64;document[_0x5eab84(0xc9)](_0x5eab84(0xdf))[_0x5eab84(0xe6)]=_0xce3d2c[_0x5eab84(0xe8)](0x2)+'%',displayChart(_0x2ac389,_0x16f1ce);}function displayChart(_0x3fad62,_0x49bbfb){const _0x2bad61=_0x35fd8b;let _0xa3e93d=document[_0x2bad61(0xc9)](_0x2bad61(0xdd))['getContext']('2d');currentChart&&currentChart[_0x2bad61(0xe3)]();let _0x3ad40d=_0x3fad62['map']((_0x7519dc,_0x596aee)=>({'data':_0x7519dc,'borderColor':_0x2bad61(0xd7)+Math['random']()*0xff+',\x20'+Math['random']()*0xff+',\x20'+Math[_0x2bad61(0xea)]()*0xff+_0x2bad61(0xd1),'fill':![]}));currentChart=new Chart(_0xa3e93d,{'type':_0x2bad61(0xd5),'data':{'labels':Array[_0x2bad61(0xda)]({'length':_0x49bbfb+0x1},(_0x1dd616,_0x163e30)=>_0x163e30),'datasets':_0x3ad40d},'options':{'plugins':{'legend':{'display':![]}},'scales':{'x':{'beginAtZero':!![],'ticks':{'min':0x0,'max':_0x49bbfb}},'y':{'beginAtZero':!![]}}}});}
+let currentChart;
+
+document.getElementById("simulate-btn").addEventListener("click", simulate);
+
+const simulations = 40;
+
+function boxMuller() {
+    let u = Math.random();
+    let v = Math.random();
+    return Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+}
+
+function simulate() {
+    let initialAmount = parseFloat(document.getElementById("initial-amount").value);
+    let annualExpense = parseFloat(document.getElementById("annual-expense").value);
+    let annualReturn = parseFloat(document.getElementById("annual-return").value) / 100;
+    let volatility = parseFloat(document.getElementById("volatility").value) / 100;
+    let inflationRate = parseFloat(document.getElementById("inflation-rate").value) / 100;
+    let yearsLeft = parseInt(document.getElementById("years-left").value);
+
+    let successCount = 0;
+    let chartData = [];
+
+    for (let i = 0; i < simulations; i++) {
+        let amount = initialAmount;
+        let yearlyData = [initialAmount];
+
+        for (let j = 0; j < yearsLeft; j++) {
+            let realReturn = ((1 + annualReturn + volatility * boxMuller()) / (1 + inflationRate)) - 1;
+            amount += realReturn * amount - annualExpense;
+            yearlyData.push(amount);
+            if (amount <= 0) break;
+        }
+
+        if (yearlyData[yearlyData.length - 1] > 0) successCount++;
+        chartData.push(yearlyData);
+    }
+
+    let successRate = (successCount / simulations) * 100;
+    document.getElementById("success-rate").innerText = successRate.toFixed(2) + "%";
+
+    displayChart(chartData, yearsLeft);
+}
+
+function displayChart(data, yearsLeft) {
+    let ctx = document.getElementById('chart').getContext('2d');
+
+    if (currentChart) {
+        currentChart.destroy();
+    }
+
+    let datasets = data.map((yearlyData, idx) => ({
+        data: yearlyData,
+        borderColor: `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.5)`,
+        fill: false
+    }));
+
+    currentChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: Array.from({ length: yearsLeft + 1 }, (_, i) => i),
+            datasets: datasets
+        },
+        options: {
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    ticks: {
+                        min: 0,
+                        max: yearsLeft
+                    }
+                },
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
